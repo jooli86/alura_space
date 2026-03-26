@@ -34,6 +34,7 @@
 * Embedado: Uso do Python dentro do HTML. EX: {% ... %}
 * Alterar o settings.py.
 * Baixar os arquivos.
+* Comando para reunir todos os assets na pasta raiz de produção. Ex: python manage.py collectstatic
 * Carregamento da Tag Library: Indicar ao HTML que temos arquivos estáticos. {% load static %}
 * Vinculação Dinâmica de Static Assets: Garantir que o servidor encontre o arquivo css independente da URL.
   Ex: <link rel="stylesheet" href="{% static 'styles/style.css' %}">
