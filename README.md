@@ -1,11 +1,17 @@
 # Anotações de estudo.
-* Hoje aprendi sobre portas TPC e que o Django roda na 8000
+
+## Segurança
+
 * Aprendi sobre a importância das variáveis de ambiente, e sobre segurança ao subir arquivos para o GitHub.
-## Porta, Atribuição, Por que importa para você?
-* 8000, Django Dev Server,"É onde o seu projeto ""mora"" enquanto você programa."
-* 5432, PostgreSQL,É a porta padrão do banco de dados profissional que você usará no futuro.
-* 3306, MySQL,Outra porta de banco de dados muito comum.
-* 6379, Redis,Usada para deixar os sites Django super velozes (cache).
+
+## Mapeamento de Portas:
+
+| Porta | Serviço | Importância |
+| :--- | :--- | :--- |
+| 8000 | Django Dev Server | Onde o projeto "mora" durante o desenvolvimento local. |
+| 5432 | PostgreSQL | Porta do banco de dados relacional padrão do mercado. |
+| 3306 | MySQL | Outra opção de banco de dados muito comum em empresas. |
+| 6379 | Redis | Usada para cache, deixando o site extremamente veloz. |
 
 
 ## App e projeto
@@ -28,4 +34,7 @@
 * Embedado: Uso do Python dentro do HTML. EX: {% ... %}
 * Alterar o settings.py.
 * Baixar os arquivos.
-* Indicar ao HTML que temos arquivos 'static'.
+* Carregamento da Tag Library: Indicar ao HTML que temos arquivos estáticos. {% load static %}
+* Vinculação Dinâmica de Static Assets: Garantir que o servidor encontre o arquivo css independente da URL.
+  Ex: <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+* Injeção de Tags de Template em Atributos src:Envolvemos o caminho de cada tag <img> com o motor do Django para que o navegador consiga localizar as pastas de assets processadas pelo servidor. Ex: <img src="{% static 'caminho/da/imagem.png' %}">
