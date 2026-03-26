@@ -21,3 +21,11 @@
 
 * Criação da página HTML e conexão com settings.py
 * Emmet: Aprendi alguns atalhos para criação de páginas HTML. Ex: h1{Título} + Tab gera <h1>Título</h1>
+
+## Arquivos estáticos
+
+* Substituir o uso do os.path.join, usando a / como BASE_DIR(que utiliza a biblioteca pathlib), isso deixa o código mais limpo e moderno. Observação: Embora o pathlib (o uso da /) seja moderno, algumas funções internas mais antigas do Django (como o collectstatic) ainda esperam receber um texto puro para conversar com o sistema de arquivos do Windows. O str() garante que essa conversa aconteça sem mal-entendidos.
+* Embedado: Uso do Python dentro do HTML. EX: {% ... %}
+* Alterar o settings.py.
+* Baixar os arquivos.
+* Indicar ao HTML que temos arquivos 'static'.
