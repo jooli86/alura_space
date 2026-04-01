@@ -72,6 +72,8 @@ Tag de encaixe: {% block content %} ... {% endblock %}
   do arquivo base.
   Tag de herança: {% extends 'galeria/base.html' %} (Deve ser a primeira linha do arquivo).
 
+* Sintaxe de Template: {% %} (lógica) e {{ }} (exibição).
+
 O código fica muito mais curto, organizado e, se eu precisar mudar o título do site ou o CSS, mudo em apenas um arquivo (base.html).
 
 ## Organização com Partials(Componentização):
@@ -90,3 +92,6 @@ O que são Partials? São "pedaços" de código HTML que isolamos em arquivos se
   Aprendi que o quem abre, fecha.
   As tags que "abraçam" o site todo (como main e div) ficam no base.html.
   As partials e os blocos de conteúdo (index, imagem) não devem fechar essas tags, para não "quebrar" o desenho do site.
+
+  # Django: Persistência de dados Admin
+
