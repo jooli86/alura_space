@@ -9,6 +9,20 @@ Por ser um registro da minha evolução real passo a passo, você encontrará an
 
 # Anotações de estudo.
 
+🛠️ Padronização de Desenvolvimento
+Para este projeto, apliquei conceitos de Conventional Commits para manter um histórico de alterações claro e profissional:
+
+* feat: Novas funcionalidades;
+
+* fix: Correções de bugs;
+
+* style: Ajustes de formatação e estilo de código;
+
+* docs: Alterações em documentações.
+
+Nota sobre o histórico de commits:
+Os primeiros commits deste projeto não seguem a convenção mencionada acima. Este padrão foi adotado a partir do estágio intermediário do projeto, fruto de uma pesquisa adicional sobre boas práticas de mercado e colaboração em equipe, indo além do conteúdo básico do curso. Acredito que a evolução técnica e a adoção de padrões profissionais devem ser aplicadas assim que o conhecimento é adquirido.
+
 ## Segurança:
 
 * Importância das variáveis de ambiente, e segurança ao subir arquivos para o GitHub.
@@ -41,7 +55,7 @@ Por ser um registro da minha evolução real passo a passo, você encontrará an
 
 ## Arquivos estáticos:
 
-* **Modernização de caminhos:** Substituir o uso do os.path.join, usando a / como BASE_DIR(que utiliza a biblioteca pathlib), isso deixa o código mais limpo e moderno. **Observação:** Embora o pathlib (o uso da /) seja moderno, algumas funções internas mais antigas do Django (como o collectstatic) ainda esperam receber um texto puro para conversar com o sistema de arquivos do Windows. O str() garante que essa conversa aconteça sem mal-entendidos.
+* **Modernização de caminhos:** Substituir o uso do os.path.join, usando a / como BASE_DIR, que utiliza a biblioteca pathlib, isso deixa o código mais limpo e moderno. **Observação:** Embora o pathlib (o uso da /) seja moderno, algumas funções internas mais antigas do Django (como o collectstatic) ainda esperam receber um texto puro para conversar com o sistema de arquivos do Windows. O str() garante que essa conversa aconteça sem mal-entendidos.
 * Embedado: Uso do Python dentro do HTML. EX: {% ... %}
 * Alterar o settings.py.
 * Baixar os arquivos.
@@ -95,3 +109,36 @@ O que são Partials? São "pedaços" de código HTML que isolamos em arquivos se
 
   # Django: Persistência de dados Admin
 
+## Estruturando a Galeria com Banco de Dados:
+
+Nesta etapa, deixamos de usar dados "manuais"(escrito direto no código) e passamos a utilizar o poder do Banco de Dados para
+gerenciar as informações do Alura Space.
+
+* Criar o modelo(Models): EX: Definimos que cada Fotografia no nosso site precisa ter obrigatoriamente: um nome, uma legenda, uma descrição e o caminho do arquivo da foto.
+
+* Migrations (Migrações): Entendemos o processo de atualizar o banco de dados. Primeiro, criamos um "plano de mudança" (makemigrations) e depois aplicamos essas mudanças de fato (migrate). EX: python manage.py makemigrations: Prepara as alterações que fizemos no modelo. python manage.py migrate: Aplica as alterações e cria as tabelas no banco de dados.
+
+* Identificação de Dados: Implementamos um método especial (__str__) para que, ao olharmos a lista de fotos no sistema, possamos ver o nome real de cada uma, facilitando a organização.
+
+
+## Persistência e Manipulação de Dados:
+
+Nesta etapa, avançamos para a comunicação direta com o Banco de Dados, aprendendo como inserir e gerenciar informações sem depender de arquivos estáticos ou dicionários manuais.
+
+* Configuração de App: Ajustamos o registro da nossa aplicação no arquivo settings.py utilizando o caminho completo: 'galeria.apps.GaleriaConfig'. Isso garante que o Django carregue todas as configurações e funcionalidades específicas do nosso app de forma robusta.
+
+* O Shell do Django: Aprendemos a utilizar o terminal interativo do Django. Ele funciona como uma "ponte" onde podemos falar diretamente com o Banco de Dados usando código Python.
+
+   * Comando para entrar: python manage.py shell
+
+   * Comando para sair: exit() ou Ctrl + Z e Enter.
+
+* Manipulação de Objetos (CRUD inicial):
+
+  * Importação: Primeiro avisamos ao Python qual "modelo" queremos usar. Ex: from galeria.models import Fotografia
+
+  * Instância e Preenchimento: Criamos o objeto na memória e preenchemos seus campos (nome, legenda, foto).
+
+  * O Método .save(): Entendi que os dados só "nascem" de verdade no banco de dados quando usamos o comando .save(). Sem ele, a informação se perde ao fechar o terminal.
+
+  * Consultas ao Banco (Queries): Utilizamos o comando Fotografia.objects.all() para listar tudo o que já salvamos. É aqui que o Django mostra seu poder de "tradutor" (ORM), buscando os dados na tabela e nos devolvendo como objetos Python prontos para uso.
