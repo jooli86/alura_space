@@ -142,3 +142,31 @@ Nesta etapa, avançamos para a comunicação direta com o Banco de Dados, aprend
   * O Método .save(): Entendi que os dados só "nascem" de verdade no banco de dados quando usamos o comando .save(). Sem ele, a informação se perde ao fechar o terminal.
 
   * Consultas ao Banco (Queries): Utilizamos o comando Fotografia.objects.all() para listar tudo o que já salvamos. É aqui que o Django mostra seu poder de "tradutor" (ORM), buscando os dados na tabela e nos devolvendo como objetos Python prontos para uso.
+
+* Estrutura de Arquivos e Novas Entradas:
+Além da manipulação via Shell, nesta etapa ficou clara a importância da organização dos arquivos físicos:
+
+ * Desenvolvimento vs. Produção: Entendi que novas imagens devem ser adicionadas sempre em setup/static/assets/imagens/galeria/. A pasta static na raiz é gerada automaticamente pelo Django (collectstatic) e não deve ser mexida manualmente.
+
+ * Sincronia: Para um novo item aparecer na galeria, o nome do arquivo na pasta deve ser idêntico ao nome salvo no campo foto do banco de dados.
+
+## Navegação Dinâmica e Detalhes da Imagem:
+Nesta etapa, transformamos o site em um sistema inteligente. Agora, o Django entende qual imagem foi clicada e exibe os detalhes específicos dela em uma página dedicada, sem precisarmos criar vários arquivos HTML.
+
+* Rotas Parametrizadas (URLs Dinâmicas): Aprendi a criar caminhos que aceitam variáveis. No urls.py, usamos o padrão <int:foto_id>, que funciona como um "espaço reservado" para o ID de cada fotografia.
+
+  Ex: path('imagem/<int:foto_id>', ...)
+
+* Captura de ID na View: A função imagem na views.py agora recebe esse ID e o utiliza para "pescar" no banco de dados exatamente a foto que o usuário quer ver.
+
+* Segurança com get_object_or_404: Em vez de uma busca simples, usamos este método que garante que, se alguém tentar acessar um ID que não existe, o site exiba uma página de erro amigável (404) em vez de travar o sistema.
+
+* Primary Key (PK): Entendi que o pk é o identificador único (a Chave Primária) de cada registro no banco de dados. É através dele que o Django faz a conexão exata entre o clique no card e a exibição da foto.
+
+* Template Universal (imagem.html): O arquivo de imagem deixou de ter textos fixos. Agora ele funciona como um "molde" que preenche automaticamente o título, a legenda e o arquivo de imagem com base nos dados que a View envia.
+
+  Ex: src="{% static ... %}{{ fotografia.foto }}"
+
+* Correção de Dados via Shell: Pratiquei a edição de registros já salvos. Aprendi que, se eu errar uma extensão (como .png em vez de .jpg), posso buscar o objeto pelo Shell, alterar o atributo e usar o .save() para corrigir a informação no banco de dados.
+
+Nota: "A lógica de ID permite que meu site tenha 10 ou 10.000 fotos usando apenas duas páginas HTML (index e imagem)."
