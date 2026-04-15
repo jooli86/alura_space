@@ -169,4 +169,29 @@ Nesta etapa, transformamos o site em um sistema inteligente. Agora, o Django ent
 
 * Correção de Dados via Shell: Pratiquei a edição de registros já salvos. Aprendi que, se eu errar uma extensão (como .png em vez de .jpg), posso buscar o objeto pelo Shell, alterar o atributo e usar o .save() para corrigir a informação no banco de dados.
 
-Nota: "A lógica de ID permite que meu site tenha 10 ou 10.000 fotos usando apenas duas páginas HTML (index e imagem)."
+Nota: A lógica de ID permite que meu site tenha 10 ou 10.000 fotos usando apenas duas páginas HTML (index e imagem).
+
+## Administração e Controle de Dados (Django Admin)
+Nesta etapa, deixamos o Shell de lado e passamos a gerenciar o conteúdo do projeto através de uma interface visual robusta, personalizada para facilitar o dia a dia.
+
+* Superusuário: Criação de credenciais de administrador (createsuperuser) para acesso total ao painel de controle do Django.
+
+* Registro e Personalização de Models: * Aprendi a registrar o model Fotografia no admin.py.
+
+* Personalizei a exibição da lista com list_display, tornando a visualização de IDs, nomes e legendas muito mais intuitiva.
+
+* Implementei links de navegação interna com list_display_links e campos de busca com search_fields.
+
+* Filtros e Paginação: * Adicionei filtros laterais (list_filter) para organizar as imagens por categoria.
+
+* Configurei a paginação (list_per_page) para garantir a performance do painel com grandes volumes de dados.
+
+* Lógica de Publicação: * Implementei um campo booleano (BooleanField) para controlar quais imagens devem aparecer no site.
+
+* Utilizei list_editable para permitir que o administrador publique ou oculte fotos diretamente da lista principal, sem precisar abrir item por item.
+
+* Gestão de Tempo e Ordenação:
+
+  * Adicionei um campo de data e hora (DateTimeField) com valor automático (default=datetime.now).
+
+  * Ajustei a view principal para exibir as fotografias por ordem de postagem (order_by("-data_fotografia")), garantindo que as novidades apareçam primeiro para o usuário.
