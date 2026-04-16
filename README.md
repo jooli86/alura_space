@@ -51,7 +51,7 @@ Os primeiros commits deste projeto não seguem a convenção mencionada acima. E
 ## Templates:
 
 * Criação da página HTML e conexão com settings.py
-* Emmet: Aprendi alguns atalhos para criação de páginas HTML. Ex: h1{Título} + Tab gera '<h1>Título</h1>'
+* Emmet: Aprendi alguns atalhos para criação de páginas HTML. Ex: `h1{Título} + Tab gera '<h1>Título</h1>`
 
 ## Arquivos estáticos:
 
@@ -62,8 +62,8 @@ Os primeiros commits deste projeto não seguem a convenção mencionada acima. E
 * Comando para reunir todos os assets na pasta raiz de produção. Ex: python manage.py collectstatic
 * Carregamento da Tag Library: Indicar ao HTML que temos arquivos estáticos. {% load static %}
 * Vinculação Dinâmica de Static Assets: Garantir que o servidor encontre o arquivo css independente da URL.
-  Ex: '<link rel="stylesheet" href="{% static 'styles/style.css' %}">'
-* Injeção de Tags de Template em Atributos src:Envolvemos o caminho de cada tag '<img>' com o motor do Django para que o navegador consiga localizar as pastas de assets processadas pelo servidor. Ex: '<img src="{% static 'caminho/da/imagem.png' %}">'
+  Ex: `<link rel="stylesheet" href="{% static 'styles/style.css' %}">`
+* Injeção de Tags de Template em Atributos src:Envolvemos o caminho de cada tag '<img>' com o motor do Django para que o navegador consiga localizar as pastas de assets processadas pelo servidor. Ex: `<img src="{% static 'caminho/da/imagem.png' %}">`
 
 ## URL name:
 Para que os links do site funcionem sempre, mesmo que eu mude o endereço da página no futuro, aprendi a usar o sistema de Nomes de Rota do Django:
