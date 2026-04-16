@@ -51,7 +51,7 @@ Os primeiros commits deste projeto não seguem a convenção mencionada acima. E
 ## Templates:
 
 * Criação da página HTML e conexão com settings.py
-* Emmet: Aprendi alguns atalhos para criação de páginas HTML. Ex: h1{Título} + Tab gera <h1>Título</h1>
+* Emmet: Aprendi alguns atalhos para criação de páginas HTML. Ex: h1{Título} + Tab gera '<h1>Título</h1>'
 
 ## Arquivos estáticos:
 
@@ -62,8 +62,8 @@ Os primeiros commits deste projeto não seguem a convenção mencionada acima. E
 * Comando para reunir todos os assets na pasta raiz de produção. Ex: python manage.py collectstatic
 * Carregamento da Tag Library: Indicar ao HTML que temos arquivos estáticos. {% load static %}
 * Vinculação Dinâmica de Static Assets: Garantir que o servidor encontre o arquivo css independente da URL.
-  Ex: <link rel="stylesheet" href="{% static 'styles/style.css' %}">
-* Injeção de Tags de Template em Atributos src:Envolvemos o caminho de cada tag <img> com o motor do Django para que o navegador consiga localizar as pastas de assets processadas pelo servidor. Ex: <img src="{% static 'caminho/da/imagem.png' %}">
+  Ex: '<link rel="stylesheet" href="{% static 'styles/style.css' %}">'
+* Injeção de Tags de Template em Atributos src:Envolvemos o caminho de cada tag '<img>' com o motor do Django para que o navegador consiga localizar as pastas de assets processadas pelo servidor. Ex: '<img src="{% static 'caminho/da/imagem.png' %}">'
 
 ## URL name:
 Para que os links do site funcionem sempre, mesmo que eu mude o endereço da página no futuro, aprendi a usar o sistema de Nomes de Rota do Django:
@@ -195,3 +195,23 @@ Nesta etapa, deixamos o Shell de lado e passamos a gerenciar o conteúdo do proj
   * Adicionei um campo de data e hora (DateTimeField) com valor automático (default=datetime.now).
 
   * Ajustei a view principal para exibir as fotografias por ordem de postagem (order_by("-data_fotografia")), garantindo que as novidades apareçam primeiro para o usuário.
+
+## Gerenciamento de Mídia e Upload de Arquivos
+
+Nesta etapa, implementei a capacidade do sistema de receber e organizar arquivos de imagem de forma dinâmica, saindo do modelo de arquivos estáticos manuais para um sistema de upload real.
+
+* Upload Dinâmico com ImageField: Substituí o campo de texto (CharField) por um campo de imagem (ImageField) no model Fotografia, permitindo o upload direto pelo Django Admin.
+
+* Organização Inteligente de Pastas: Configurei o parâmetro upload_to para organizar as fotos automaticamente por data (fotos/%Y/%m/%d/), evitando conflitos de nomes e facilitando a manutenção do servidor.
+
+* Configuração de Media Files:
+
+* Defini MEDIA_URL e MEDIA_ROOT no settings.py para gerenciar o armazenamento físico e o acesso via URL das imagens.
+
+* Configurei as rotas no urls.py do projeto para servir os arquivos de mídia durante o desenvolvimento.
+
+* Tratamento de Exceções (Fallback): * Implementei uma lógica condicional no index.html para verificar a existência de imagens.
+
+  * Caso uma fotografia não possua arquivo, o sistema exibe automaticamente uma imagem padrão (not-found.png) via arquivos estáticos.
+
+  * Integração com Pillow: Instalação e configuração da biblioteca Pillow para processamento de imagens no backend Python.
