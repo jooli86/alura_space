@@ -63,7 +63,7 @@ Os primeiros commits deste projeto não seguem a convenção mencionada acima. E
 * Carregamento da Tag Library: Indicar ao HTML que temos arquivos estáticos. {% load static %}
 * Vinculação Dinâmica de Static Assets: Garantir que o servidor encontre o arquivo css independente da URL.
   Ex: `<link rel="stylesheet" href="{% static 'styles/style.css' %}">`
-* Injeção de Tags de Template em Atributos src:Envolvemos o caminho de cada tag '<img>' com o motor do Django para que o navegador consiga localizar as pastas de assets processadas pelo servidor. Ex: `<img src="{% static 'caminho/da/imagem.png' %}">`
+* Injeção de Tags de Template em Atributos src:Envolvemos o caminho de cada tag `<img>` com o motor do Django para que o navegador consiga localizar as pastas de assets processadas pelo servidor. Ex: `<img src="{% static 'caminho/da/imagem.png' %}">`
 
 ## URL name:
 Para que os links do site funcionem sempre, mesmo que eu mude o endereço da página no futuro, aprendi a usar o sistema de Nomes de Rota do Django:
@@ -215,3 +215,63 @@ Nesta etapa, implementei a capacidade do sistema de receber e organizar arquivos
   * Caso uma fotografia não possua arquivo, o sistema exibe automaticamente uma imagem padrão (not-found.png) via arquivos estáticos.
 
   * Integração com Pillow: Instalação e configuração da biblioteca Pillow para processamento de imagens no backend Python.
+
+## Funcionalidade de Busca Dinâmica
+
+Aprendi que uma barra de busca não é apenas um desenho no topo do site; ela precisa de um "cérebro" para filtrar o que o usuário quer ver.
+
+* Transformando HTML em Formulário: Entendi que para a busca funcionar, o campo de texto precisa estar dentro de uma tag <form>. Dei o nome (name="buscar") para o campo e transformuei a lupa em um botão de envio (type="submit").
+
+* Capturando dados com request.GET: Aprendi que quando o usuário digita algo e clica na lupa, o Django "pesca" essa palavra na URL do navegador através do objeto request.GET.
+
+* Filtros Inteligentes (icontains): Usei o poder do ORM do Django para filtrar o banco de dados. O comando nome__icontains é incrível porque ele busca por partes da palavra e ignora se o usuário digitou em maiúsculo ou minúsculo.
+
+* Página de "Não Encontrado": Criei uma lógica para que, se o usuário buscar por algo que não existe (ex: "Alien"), o site exiba uma mensagem amigável de "Fotografias não encontradas" em vez de apenas ficar em branco.
+
+## Gestão de Equipe (Usuários e Permissões)
+
+Nesta etapa final, explorei como o Django lida com a segurança e quem pode mexer no quê dentro do painel administrativo.
+
+* Diferença de Poderes: Entendi que um "Superusuário" pode tudo, mas um "Membro da Equipe" (Staff) só pode entrar no Admin se eu permitir.
+
+* Permissões Granulares: Aprendi que posso criar usuários com "poderes limitados". Por exemplo: criei a usuária "Ana", que tem permissão apenas para adicionar e editar fotos, mas não pode deletar nada nem mexer nos outros usuários.
+
+* Organização por Grupos: Em vez de dar permissão um por um, aprendi a criar Grupos. Criei o grupo "FotografiaAdmin". Agora, qualquer pessoa que eu colocar nesse grupo já "ganha" automaticamente todos os poderes de edição da galeria. Isso facilita muito a gestão quando o time cresce!
+
+
+
+
+
+
+
+
+
+🛠️ Minha Caixa de Ferramentas
+Para construir este projeto, utilizei as seguintes tecnologias:
+
+Django 4.x: O coração do projeto.
+
+SQLite: Onde guardo todas as informações das minhas fotografias.
+
+Pillow: A biblioteca que me ajudou a processar os uploads de imagem.
+
+HTML/CSS: Para dar vida e cor aos templates e partials.
+
+🔧 Quer rodar este Diário de Bordo na sua máquina?
+Se você quiser testar o projeto, aqui está o passo a passo que aprendi para configurar o ambiente:
+
+Crie um ambiente virtual: python -m venv venv
+
+Ative o ambiente:
+
+Windows: .\venv\Scripts\activate
+
+Linux/Mac: source venv/bin/activate
+
+Instale as dependências: pip install -r requirements.txt
+
+Prepare o Banco de Dados: python manage.py migrate
+
+Decole o servidor: python manage.py runserver
+
+Este projeto é um registro da minha jornada na formação Django da Alura.
