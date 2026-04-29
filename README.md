@@ -239,6 +239,39 @@ Nesta etapa final, explorei como o Django lida com a segurança e quem pode mexe
 * Organização por Grupos: Em vez de dar permissão um por um, aprendi a criar Grupos. Criei o grupo "FotografiaAdmin". Agora, qualquer pessoa que eu colocar nesse grupo já "ganha" automaticamente todos os poderes de edição da galeria. Isso facilita muito a gestão quando o time cresce!
 
 
+# 🔐 Django: Autenticação de Formulários e Alerta
+
+Nota de Transição Técnica:
+A partir desta etapa, as anotações deste diário de bordo passam a adotar uma nomenclatura mais técnica e rigorosa. O objetivo é demonstrar a maturidade alcançada no desenvolvimento com Django, focando em padrões de mercado, segurança e arquitetura de software.
+
+🏗️ Implementações de Arquitetura e Setup (Fase 3)
+Nesta aula inicial do módulo, focamos na infraestrutura necessária para suportar o sistema de autenticação e gestão de perfis.
+
+1. Modularização por Responsabilidade Única
+Em vez de sobrecarregar o app galeria, foi criado um novo app dedicado exclusivamente à gestão de contas.
+
+Comando: python manage.py startapp usuarios
+
+Conceito: Aplicação do princípio de separação de responsabilidades, permitindo que o módulo de usuários seja independente e reutilizável.
+
+2. Desacoplamento de Rotas (Roteamento de App)
+Implementei o padrão de roteamento descentralizado para manter a escalabilidade do projeto.
+
+Ação: Criação do arquivo usuarios/urls.py e sua inclusão no core do projeto (setup/urls.py).
+
+Técnica: Uso da função include() para delegar o controle de rotas específicas ao app proprietário.
+
+3. Registro e Configuração de App
+Settings: Inclusão da classe de configuração usuarios.apps.UsuariosConfig no INSTALLED_APPS.
+
+Importância: Garante que o Django carregue os sinais (signals) e metadados do app de forma explícita, seguindo as recomendações da documentação oficial.
+
+4. Gestão de Ambiente e Dependências
+Isolamento: Uso de ambiente virtual .venv para garantir a integridade das versões das bibliotecas.
+
+Sincronização: Atualização e instalação via pip install -r requirements.txt.
+
+
 
 
 
