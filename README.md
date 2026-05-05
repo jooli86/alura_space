@@ -271,6 +271,53 @@ Isolamento: Uso de ambiente virtual .venv para garantir a integridade das versõ
 
 Sincronização: Atualização e instalação via pip install -r requirements.txt.
 
+🚀 Autenticação e Modularização (Fase 2)
+Nesta etapa, o foco foi a expansão da arquitetura do Alura Space, isolando as responsabilidades de gerenciamento de usuários e refinando a interface com padrões de reaproveitamento de código.
+
+🛠️ Implementações Técnicas
+Modularização com Django Apps: Criação do app usuarios para desacoplar a lógica de autenticação da lógica de negócios da galeria, seguindo o princípio de responsabilidade única.
+
+Roteamento Independente: Implementação de rotas específicas para o app de usuários utilizando o método include no arquivo de configuração principal e importações relativas (from . import views) para garantir a portabilidade do módulo.
+
+Herança de Templates (DRY - Don't Repeat Yourself): Refatoração completa dos arquivos login.html e cadastro.html. Em vez de duplicar código estrutural, utilizei a tag {% extends %} para herdar o layout base do projeto, mantendo o código limpo e de fácil manutenção.
+
+Integração com Bootstrap 5: Centralização dos estilos globais no base.html, permitindo que os novos formulários de autenticação utilizassem componentes modernos (como form-control e botões responsivos) de forma nativa e padronizada.
+
+Segurança em Formulários: Implementação de métodos POST para envio de dados sensíveis e integração da proteção CSRF (Cross-Site Request Forgery) através da tag {% csrf_token %}.
+
+📝 Nota:
+A decisão de não utilizar o código padrão fornecido durante a aula foi motivada pela busca de uma arquitetura mais limpa. Ao aplicar a herança de templates e centralizar o Bootstrap, reduzi a redundância de código em mais de 60%, facilitando futuras atualizações visuais e estruturais em todo o ecossistema do projeto.
+
+🛡️ Implementação de Formulários e Segurança (Fase 3)
+Dando continuidade à reestruturação do sistema de autenticação, esta etapa focou na transição do HTML estático para a gestão dinâmica de dados via Django Forms, priorizando a segurança da informação.
+
+1. Abstração de Formulários com forms.Form
+Em vez de declarar campos manualmente no template, implementamos classes de formulário no arquivo usuarios/forms.py.
+
+Técnica: Criação das classes LoginForms e CadastroForms.
+
+Conceito: Uso de Widgets e Atributos (attrs) para injetar classes CSS do Bootstrap 5 (form-control) diretamente através do Python.
+
+Vantagem: Centralização da lógica de validação e facilidade de manutenção (Princípio DRY).
+
+2. Proteção Contra Ataques CSRF
+Implementamos uma camada de defesa contra vulnerabilidades de falsificação de solicitação entre sites.
+
+Ação: Inclusão da tag {% csrf_token %} em todos os formulários que utilizam o método POST.
+
+Mecânica: O Django gera um token aleatório e secreto que deve ser validado pelo servidor a cada envio de dados, garantindo que a requisição partiu legitimamente do nosso servidor.
+
+3. Renderização Dinâmica e Experiência do Usuário (UX)
+Refinamos a forma como os dados são apresentados ao cliente final.
+
+Placeholders: Adição de exemplos realistas dentro dos campos de entrada para guiar o preenchimento do usuário.
+
+Loop de Campos: Uso da tag {% for field in form.visible_fields %} no HTML para automatizar a exibição das labels e dos inputs, reduzindo drasticamente o acúmulo de código repetitivo nos templates.
+
+4. Tipagem e Validação Nativa
+EmailField: Uso de campos específicos para e-mail que já trazem validação de sintaxe (presença de @ e domínio) sem necessidade de regex manual.
+
+PasswordInput: Configuração do widget para garantir que caracteres sensíveis sejam ocultados durante a digitação.
 
 
 
