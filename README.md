@@ -319,7 +319,13 @@ EmailField: Uso de campos específicos para e-mail que já trazem validação de
 
 PasswordInput: Configuração do widget para garantir que caracteres sensíveis sejam ocultados durante a digitação.
 
+5. Aperfeiçoamento da Camada de Autenticação
 
+Persistência de Usuários: Integração com o model User nativo do Django.
+
+Cláusulas de Guarda: Implementação de validações manuais (comparação de senhas e verificação de duplicidade de username) antes da persistência.
+
+Fluxo de Navegação: Uso de redirect para guiar a jornada do usuário do cadastro para o login após o sucesso da operação.
 
 
 
