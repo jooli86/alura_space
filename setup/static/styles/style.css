@@ -172,6 +172,7 @@ table {
     font-weight: bold;
     line-height: 1.2rem;
     margin-top: 0.8em;
+    color: #D9D9D9 !important;
 }
 
 .card__texto {
@@ -185,6 +186,7 @@ table {
 }
 
 .card__descricao {
+    color: #D9D9D9 !important;
     font-size: 0.6em;
     margin-top: 0.8em;
 }

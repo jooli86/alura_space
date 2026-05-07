@@ -328,7 +328,25 @@ Cláusulas de Guarda: Implementação de validações manuais (comparação de s
 Fluxo de Navegação: Uso de redirect para guiar a jornada do usuário do cadastro para o login após o sucesso da operação.
 
 
+6. Sistema de Comunicação e Feedback (Django Messages)
+Implementamos uma camada de feedback em tempo real para informar o usuário sobre o status das suas ações, melhorando drasticamente a usabilidade (UX).
 
+Framework de Mensagens: Integração da biblioteca django.contrib.messages para capturar e exibir notificações persistentes entre redirecionamentos.
+
+Contextualização de Alertas: Uso de diferentes níveis de severidade para guiar a percepção do usuário:
+
+messages.success: Feedback positivo para conclusões de fluxo (ex: "Login realizado").
+
+messages.error: Alertas visuais para falhas de validação ou segurança.
+
+Centralização de Template: Implementação de um loop global de mensagens no arquivo base.html. Essa abordagem permite que qualquer página do sistema exiba notificações sem a necessidade de replicação de código nos templates específicos.
+
+7. Integração com Frameworks de Estilo (Bootstrap 5)
+Para garantir que o sistema de feedback fosse visualmente intuitivo, integramos componentes de interface modernos.
+
+Alertas Dinâmicos: Uso de classes CSS condicionais (alert-primary para sucessos e alert-danger para erros) baseadas nas tags de mensagem do Django.
+
+Otimização de Carregamento: Centralização dos assets externos (Bootstrap CDN) no esqueleto principal do projeto, garantindo consistência visual em todas as rotas de autenticação e galeria.
 
 
 
