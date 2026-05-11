@@ -172,7 +172,7 @@ table {
     font-weight: bold;
     line-height: 1.2rem;
     margin-top: 0.8em;
-    color: #D9D9D9 !important;
+    color: #D9D9D9;
 }
 
 .card__texto {
@@ -186,8 +186,8 @@ table {
 }
 
 .card__descricao {
-    color: #D9D9D9 !important;
-    font-size: 0.6em;
+    color: #D9D9D9;
+    font-size: 0.9rem;
     margin-top: 0.8em;
 }
 
@@ -383,4 +383,28 @@ table {
 .tags__tag:hover {
     border: 2px solid #7B78E5;
     cursor: pointer;
+}
+/* No final do seu style.css */
+
+.alert {
+    display: block !important;
+    position: relative !important;
+    padding: 1rem 1rem !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid transparent !important;
+    border-radius: 0.375rem !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    width: 100% !important; /* Garante que ele apareça na largura total */
+}
+
+.alert-primary {
+    color: #084298 !important;
+    background-color: #cfe2ff !important;
+    border-color: #b6d4fe !important;
+}
+
+.alert-danger {
+    color: #842029 !important;
+    background-color: #f8d7da !important;
+    border-color: #f5c2c7 !important;
 }

@@ -1,6 +1,10 @@
 {% extends 'galeria/base.html' %}
 {% load static %}
 
+{% block styles %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <section class="galeria" style="margin-left: 5em">
     <form action="{% url 'login' %}" method="POST">

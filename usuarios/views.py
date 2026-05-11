@@ -39,10 +39,6 @@ def cadastro(request):
 
         if form.is_valid():
 
-            if form["senha_1"].value() != form["senha_2"].value():
-                messages.error(request, "As senhas devem ser iguais")
-                return redirect("cadastro")
-
             nome = form.cleaned_data.get("nome_cadastro")
             email = form.cleaned_data.get("email")
             senha = form.cleaned_data.get("senha_1")

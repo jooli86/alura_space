@@ -348,6 +348,20 @@ Alertas Dinâmicos: Uso de classes CSS condicionais (alert-primary para sucessos
 
 Otimização de Carregamento: Centralização dos assets externos (Bootstrap CDN) no esqueleto principal do projeto, garantindo consistência visual em todas as rotas de autenticação e galeria.
 
+8. Relacionamento de Dados e Integridade de Formulários
+Nesta etapa, avançamos na arquitetura do banco de dados e refinamos a experiência do usuário através de validações customizadas no backend.
+
+Associação de Modelos (Foreign Key): Implementação do campo usuario no model Fotografia, estabelecendo um relacionamento de "Muitos-para-Um" com a tabela nativa de usuários do Django (User).
+
+Integridade Referencial: Uso do parâmetro on_delete=models.SET_NULL para garantir que as fotografias não sejam apagadas caso um usuário seja removido do sistema.
+
+Validações Customizadas (Métodos Clean): Migramos a lógica de validação da View para o Form, respeitando o princípio de "Modelos e Formulários Gordos, Views Magras".
+
+Sanitização de Username: Implementação do método clean_nome_cadastro para impedir a persistência de nomes de usuários com espaços em branco.
+
+Confirmação de Senha: Validação cruzada entre os campos senha_1 e senha_2 diretamente no formulário.
+
+Feedback de Erro por Campo: Refatoração dos templates de cadastro para exibir mensagens de erro específicas (field.errors) logo abaixo de cada input, utilizando o estilo visual customizado no CSS.
 
 
 🛠️ Minha Caixa de Ferramentas
