@@ -20,14 +20,14 @@
 
 <body>
     <div class="pagina-inicial">
-        {% include 'galeria/partials/_header.html' %}
+        {% include 'partials/_header.html' %}
 
         <main class="principal">
-            {% include 'galeria/partials/_menu.html' %}
+            {% include 'partials/_menu.html' %}
 
             <section class="conteudo-mensagens" style="width: 100%">
                 {% for message in messages %}
-                    <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-primary{% endif %}">
+                    <div class="alert alert-{{ message.tags }}">
                         <p style="margin-bottom: 0;">{{ message }}</p>
                     </div>
                 {% endfor %} 
@@ -37,7 +37,7 @@
         </main> 
     </div>
 
-    {% include 'galeria/partials/_footer.html' %}
+    {% include 'partials/_footer.html' %}
 </body>
 
 </html>

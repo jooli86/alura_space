@@ -364,6 +364,23 @@ Confirmação de Senha: Validação cruzada entre os campos senha_1 e senha_2 di
 Feedback de Erro por Campo: Refatoração dos templates de cadastro para exibir mensagens de erro específicas (field.errors) logo abaixo de cada input, utilizando o estilo visual customizado no CSS.
 
 
+8. Relacionamento de Dados e Integridade de Formulários
+Associação de Modelos (Foreign Key): Implementação do campo usuario no model Fotografia, estabelecendo um relacionamento de "Muitos-para-Um" com a tabela nativa de usuários do Django (User).
+
+Integridade Referencial: Uso de on_delete=models.SET_NULL para garantir a persistência das fotografias mesmo em caso de remoção de usuários.
+
+Validações Customizadas (Métodos Clean): Migração da lógica de validação para o forms.py, aplicando os princípios de Clean Code e separação de responsabilidades.
+
+9. Refatoração de Arquitetura de Templates e Sistema de Alertas
+Arquitetura Global de Templates: Realocação da pasta partials para a raiz do diretório templates, facilitando o reuso de componentes entre diferentes apps.
+
+Mensagens Dinâmicas (MESSAGE_TAGS): Padronização do sistema de feedback visual integrando as constantes de mensagens do Django diretamente com classes CSS customizadas (danger, success).
+
+Segurança de Acesso: Implementação de travas de autenticação nas views, garantindo que funcionalidades críticas (como a busca e a index) sejam restritas a usuários logados.
+
+
+
+
 🛠️ Minha Caixa de Ferramentas
 Para construir este projeto, utilizei as seguintes tecnologias:
 
